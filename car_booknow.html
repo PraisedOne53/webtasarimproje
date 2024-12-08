@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Now - Rent4u</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .booking-form {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+    }
+
+    .booking-form h1 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header_section">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">Rent4u</a>
+    </nav>
+  </header>
+
+  <div class="booking-form">
+    <h1>Book Your Car</h1>
+    <form>
+      <div class="form-group">
+        <label for="carType">Car Type</label>
+        <select class="form-control" id="carType">
+          <option>Car 1</option>
+          <option>Car 2</option>
+          <option>Car 3</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="pickupDate">Pickup Date</label>
+        <input type="date" class="form-control" id="pickupDate">
+      </div>
+      <div class="form-group">
+        <label for="returnDate">Return Date</label>
+        <input type="date" class="form-control" id="returnDate">
+      </div>
+      <div class="form-group">
+        <label for="userName">Your Name</label>
+        <input type="text" class="form-control" id="userName" placeholder="Enter your name">
+      </div>
+      <div class="form-group">
+        <label for="contactNumber">Contact Number</label>
+        <input type="tel" class="form-control" id="contactNumber" placeholder="Enter your phone number">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+  </div>
+
+  <footer class="footer_section">
+    <p>© 2024 Rent4u. All Rights Reserved.</p>
+  </footer>
+</body>
+
+</html>

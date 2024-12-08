@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .admin-container {
+            padding: 20px;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            color: white;
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h3 class="text-center">Admin Panel</h3>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#add-content">İçerik Ekleme</a>
+            <a href="#campaigns">Duyurular & Kampanyalar Yönetimi</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div id="dashboard">
+                <h2>Dashboard</h2>
+                <p>Admin paneline hoş geldiniz! Buradan içeriklerinizi yönetebilirsiniz.</p>
+            </div>
+
+            <div id="add-content" class="mt-5">
+                <h2>İçerik Ekleme</h2>
+                <form id="addContentForm">
+                    <div class="form-group">
+                        <label for="contentTitle">Başlık</label>
+                        <input type="text" class="form-control" id="contentTitle" placeholder="Başlık giriniz">
+                    </div>
+                    <div class="form-group">
+                        <label for="contentBody">İçerik</label>
+                        <textarea class="form-control" id="contentBody" rows="5" placeholder="İçerik metnini giriniz"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contentImage">Resim URL</label>
+                        <input type="text" class="form-control" id="contentImage" placeholder="Resim URL'si giriniz">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="addContent()">Ekle</button>
+                </form>
+            </div><div id="campaigns" class="mt-5">
+                <h2>Duyurular & Kampanyalar Yönetimi</h2>
+                <form id="campaignForm">
+                    <div class="form-group">
+                        <label for="campaignTitle">Kampanya Başlığı</label>
+                        <input type="text" class="form-control" id="campaignTitle" placeholder="Başlık giriniz">
+                    </div>
+                    <div class="form-group">
+                        <label for="campaignDetails">Kampanya Detayları</label>
+                        <textarea class="form-control" id="campaignDetails" rows="4" placeholder="Kampanya detaylarını giriniz"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="addCampaign()">Ekle</button>
+                </form>
+                <ul id="campaignList" class="list-group mt-3">
+                    <!-- Kampanyalar burada listelenecek -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const contentList = document.getElementById('contentList');
+        const campaignList = document.getElementById('campaignList');
+
+        function addContent() {
+            const title = document.getElementById('contentTitle').value;
+            const body = document.getElementById('contentBody').value;
+            const image = document.getElementById('contentImage').value;
+
+            if (title && body && image) {
+                const listItem = document.createElement('li');
+                listItem.className = 'list-group-item';
+                listItem.innerHTML = `
+                    <h5>${title}</h5>
+                    <p>${body}</p>
+                    <img src="${image}" alt="${title}" style="width: 100px; height: auto;">
+                    <button class="btn btn-danger btn-sm mt-2" onclick="this.parentElement.remove()">Sil</button>
+                `;
+                contentList.appendChild(listItem);
+
+                // Formu temizle
+                document.getElementById('addContentForm').reset();
+            } else {
+                alert('Lütfen tüm alanları doldurun!');
+            }
+        }
+
+        function addCampaign() {
+            const title = document.getElementById('campaignTitle').value;
+            const details = document.getElementById('campaignDetails').value;
+
+            if (title && details) {
+                const listItem = document.createElement('li');
+                listItem.className = 'list-group-item';
+                listItem.innerHTML = `
+                    <h5>${title}</h5>
+                    <p>${details}</p>
+                    <button class="btn btn-danger btn-sm mt-2" onclick="this.parentElement.remove()">Sil</button>
+                `;
+                campaignList.appendChild(listItem);
+
+                // Formu temizle
+                document.getElementById('campaignForm').reset();
+            } else {
+                alert('Lütfen tüm alanları doldurun!');
+            }
+        }
+    </script>
+</body>
+</html>
